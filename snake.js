@@ -127,20 +127,20 @@ function createRect(x,y,width,height,color){
     canvasContext.fillRect(x,y,width,height);
 }
 
-window.addEventListener("keydown", (event)=>{
-    setTimeout(()=>{
-        if(event.keyCode == 37 && snake.rotateX != 1){
+window.addEventListener("keydown", (event) => {
+    requestAnimationFrame(() => {
+        if (event.key === "ArrowLeft" && snake.rotateX !== 1) {
             snake.rotateX = -1;
             snake.rotateY = 0;
-        } else if(event.keyCode == 38 && snake.rotateY != 1){
+        } else if (event.key === "ArrowUp" && snake.rotateY !== 1) {
             snake.rotateX = 0;
             snake.rotateY = -1;
-        } else if(event.keyCode == 39 && snake.rotateX != -1){
+        } else if (event.key === "ArrowRight" && snake.rotateX !== -1) {
             snake.rotateX = 1;
             snake.rotateY = 0;
-        } else if(event.keyCode == 40 && snake.rotateY != -1){
+        } else if (event.key === "ArrowDown" && snake.rotateY !== -1) {
             snake.rotateX = 0;
             snake.rotateY = 1;
-        } 
-    }, 1)
-})
+        }
+    });
+});
